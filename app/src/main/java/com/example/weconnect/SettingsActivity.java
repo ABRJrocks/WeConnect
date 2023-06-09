@@ -3,11 +3,13 @@ package com.example.weconnect;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.weconnect.Models.Users;
@@ -36,10 +38,8 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
         binding = ActivitySettingsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
 
         getSupportActionBar().hide();
 
@@ -52,15 +52,13 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
                 startActivity(intent);
-
             }
         });
-
 
         binding.saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!binding.etStatus.getText().toString().equals("") && !binding.userName.getText().toString().equals("")){
+                if (!binding.etStatus.getText().toString().equals("") && !binding.userName.getText().toString().equals("")) {
                     String status = binding.etStatus.getText().toString();
                     String username = binding.userName.getText().toString();
 
@@ -71,35 +69,31 @@ public class SettingsActivity extends AppCompatActivity {
                     database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
                             .updateChildren(obj);
                     Toast.makeText(SettingsActivity.this, "Profile Updated!", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(SettingsActivity.this, "Please Enter Username and About", Toast.LENGTH_SHORT).show();
                 }
-     
             }
         });
 
         database.getReference().child("Users").child(FirebaseAuth.getInstance().getUid())
-                        .addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                Users users = snapshot.getValue(Users.class);
-                                Picasso.get()
-                                        .load(users.getProfilePic())
-                                        .placeholder(R.drawable.avatar)
-                                        .into(binding.profileImage);
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Users users = snapshot.getValue(Users.class);
+                        Picasso.get()
+                                .load(users.getProfilePic())
+                                .placeholder(R.drawable.avatar)
+                                .into(binding.profileImage);
 
-                                binding.etStatus.setText(users.getStatus());
-                                binding.userName.setText(users.getUserName());
+                        binding.etStatus.setText(users.getStatus());
+                        binding.userName.setText(users.getUserName());
+                    }
 
-                            }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
-
+                    }
+                });
 
         binding.plus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,17 +105,27 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        binding.textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Navigate to MapsFragment
+                Fragment mapsFragment = new MapsFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, mapsFragment)
+                        .commit();
+            }
+        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (data.getData()!=null){
+        if (data.getData() != null) {
             Uri sFile = data.getData();
             binding.profileImage.setImageURI(sFile);
 
-            final StorageReference reference = storage.getReference().child( "Profile_pic")
+            final StorageReference reference = storage.getReference().child("Profile_pic")
                     .child(FirebaseAuth.getInstance().getUid());
 
             reference.putFile(sFile).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -137,6 +141,5 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             });
         }
-
     }
 }

@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SettingsActivity"
-    android:background="@drawable/w1"
-    >
+    android:background="@drawable/w1">
 
     <ImageView
         android:layout_width="30dp"
@@ -15,7 +14,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        app:srcCompat = "@drawable/leftarrowwhite"/>
+        app:srcCompat="@drawable/leftarrowwhite"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,18 +46,18 @@
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="-25dp"
-            app:srcCompat = "@drawable/plus"/>
+            app:srcCompat="@drawable/plus"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
-            
+
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:padding  = "5dp"
+                android:padding="5dp"
                 android:text="Username:"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -72,19 +71,19 @@
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
                 android:textColorHint="#FFCCCCCC"/>
-            
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:padding  = "5dp"
+                android:padding="5dp"
                 android:text="About:"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -98,11 +97,8 @@
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
                 android:textColorHint="#FFCCCCCC"/>
-            
-            
 
         </LinearLayout>
-            
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
@@ -117,10 +113,8 @@
             android:textColorHint="@color/colorPrimary"
             android:id="@+id/saveButton"/>
 
-
     </LinearLayout>
-    
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -143,10 +137,11 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"/>
+
         <TextView
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView3"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
             android:drawableLeft="@drawable/about"
@@ -155,7 +150,8 @@
             android:text="About"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -169,6 +165,7 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -182,6 +179,7 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -199,4 +197,10 @@
     </LinearLayout>
 
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </RelativeLayout>
+
