@@ -11,8 +11,28 @@
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2" />
+        android:layout_weight="2"
+        android:contentDescription="Map showing the location" />
 
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/dev1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Developer 1: Abdul Rafay        SAP ID: 25601"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:padding="8dp" />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/dev2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Developer 1: Areeba Khan       SAP ID: 24267"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:padding="8dp" />
     <TextView
         android:layout_marginTop="20dp"
         android:id="@+id/addressTextView"

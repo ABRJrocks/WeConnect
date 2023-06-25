@@ -65,7 +65,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:id="@+id/userName"
                 android:hint="Enter Your Name"
                 android:inputType="textPersonName"
@@ -91,7 +91,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:id="@+id/etStatus"
                 android:hint="Tell Something About You"
                 android:inputType="textPersonName"

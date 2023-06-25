@@ -86,7 +86,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
         // Add a marker to a location
         LatLng location = new LatLng(31.377283, 74.230757);
-        googleMap.addMarker(new MarkerOptions().position(location).title("Marker Title"));
+        googleMap.addMarker(new MarkerOptions().position(location).title("Riphah International University"));
 
         // Move the camera to the marker's location
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f));
